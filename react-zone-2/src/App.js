@@ -9,7 +9,8 @@ class App extends Component{
       { name : "Severus Snape", age: 60},
       { name : "Minerva Mcgonaggel", age: 65},
     ],
-    otherState : 'Ahmet'
+    otherState : 'Ahmet',
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -34,6 +35,19 @@ class App extends Component{
     })
   }
 
+  toggleNameHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+    })
+  }
+
+  deletePersonHandler = (personIndex) => {
+    const persons = [...this.state.persons];
+    persons.splice(personIndex,1);
+    this.setState({persons: persons});
+  }
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -42,13 +56,24 @@ class App extends Component{
       padding: '8px',
       cursor: 'pointer'
     }
+
+    let person = null;
+
+    if (this.state.showPersons){
+      person = (
+        <div>
+            {this.state.persons.map( (person, index) => {
+              return <Person click = {() => this.deletePersonHandler(index)} name = {person.name} age = {person.age} />
+            })}
+        </div>
+      );
+    }
+
     return(
       <div className="App">
         <h1>Hello!</h1>
-        <button style = {style} onClick = {this.switchNameHandler.bind(this, 'Albus Percival Wulfric Brian Dumbledore')}>Reveal Name</button>
-        <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age} />
-        <Person click = {this.switchNameHandler.bind(this, 'Half-Blood Prince')} name = {this.state.persons[1].name} age = {this.state.persons[1].age} />
-        <Person changed = {this.nameChangedHandler} name = {this.state.persons[2].name} age = {this.state.persons[2].age} />
+        <button style = {style} onClick = {this.toggleNameHandler}>Toggle Name</button>
+        {person}
       </div>
     );
   }
