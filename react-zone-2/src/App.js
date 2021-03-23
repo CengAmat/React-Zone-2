@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
 
 class App extends Component{
   state = {
@@ -71,7 +70,7 @@ class App extends Component{
       );
       style.backgroundColor = 'red';
       style[':hover'] = {
-        backgroundColor: 'lightblue',
+        backgroundColor: 'lightpink',
         color: 'lack'
       }
     }
@@ -86,13 +85,13 @@ class App extends Component{
 
     return(
       <div className="App">
-        <h1>Hello!</h1>
-        <p className = {classes.join(' ')}>Who this?</p>
-        <button style = {style} onClick = {this.toggleNameHandler}>Toggle Name</button>
-        {person}
-      </div>
+          <h1>Hello!</h1>
+          <p className = {classes.join(' ')}>Who this?</p>
+          <button style = {style} onClick = {this.toggleNameHandler}>Toggle Name</button>
+          {person}
+        </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
