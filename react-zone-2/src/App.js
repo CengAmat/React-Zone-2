@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component{
@@ -14,7 +14,6 @@ class App extends Component{
   }
 
   nameChangedHandler = (event, id) => {
-
     const personIndex = this.state.persons.findIndex( p => {
       return p.id === id;
     } );
@@ -47,6 +46,7 @@ class App extends Component{
 
   render() {
     let person = null;
+    let btnClass = '';
 
     if (this.state.showPersons){
       person = (
@@ -56,21 +56,22 @@ class App extends Component{
             })}
         </div>
       );
+      btnClass = classes.red;
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2){
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1){
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return(
-      <div className="App">
+      <div className={classes.App}>
           <h1>Hello!</h1>
-          <p className = {classes.join(' ')}>Who this?</p>
-          <button className = "button" alt = {this.state.showPersons} onClick = {this.toggleNameHandler}>Toggle Name</button>
+          <p className = {assignedClasses.join(' ')}>Who this?</p>
+          <button className = {btnClass} onClick = {this.toggleNameHandler}>Toggle Name</button>
           {person}
         </div>
     );

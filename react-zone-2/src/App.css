@@ -10,7 +10,7 @@
   font-weight: bold;
 }
 
-.button {
+.App button {
   background-color: green;
   color: white;
   font: inherit;
@@ -19,12 +19,12 @@
   cursor: pointer;
 }
 
-.button:hover {
+.App button:hover {
   background-color: lightgreen;
   color: black;
 }
 
-/* .Button.Red {
+.App button.red {
   background-color: red;
   color: white;
   font: inherit;
@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-.Button:hover {
-  background-color: lightsalmon;
+.App button.red:hover {
+  background-color: lightpink;
   color: black;
-} */
+}
