@@ -42,7 +42,7 @@ class App extends Component{
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex( p => {
       return p.id === id;
-    } );
+    });
 
     const person = {
       ...this.state.persons[personIndex]
@@ -88,12 +88,12 @@ class App extends Component{
           Remove Cockpit
         </button>
         {this.state.showCockpit ? (
-        <Cockpit
-          title = {this.props.appTitle}
-          showPersons = {this.state.showPersons}
-          persons = {this.state.persons} 
-          clicked = {this.togglePersonsHandler}
-        />
+          <Cockpit
+            title = {this.props.appTitle}
+            showPersons = {this.state.showPersons}
+            persons = {this.state.persons} 
+            clicked = {this.togglePersonsHandler}
+          />
         ) : null }
           {person}
         </div>
