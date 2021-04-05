@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import classes from '../Cockpit/Cockpit.css'
 
-const Cockpit = (props) => {
+const Cockpit = props => {
     useEffect(() => {
       console.log('[Cockpit.js] useEffect');
       // Http requests
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         alert('Saved data to cloud!')
       }, 1000);
       return () => {
+        clearTimeout(timer);
         console.log('[Cockpit.js] Cleanup work in useEffect');
       }
-    }, [props.persons]);
+    }, []);
 
     useEffect(() => {
       console.log('[Cockpit.js] 2nd useEffect');
