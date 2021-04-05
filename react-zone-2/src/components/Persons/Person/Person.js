@@ -5,13 +5,31 @@ import withClass from '../../../hoc/withClass';
 import PropTypes from 'prop-types'
 
 class Person extends Component {
+    constructor(props) {
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
+
+    componentDidMount() {
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
+    
     render() {
         console.log('[Person.js] rendering...');
         return (
             <Aux>
-                <p onClick = {this.props.click}>{this.props.name} - {this.props.age} years old! </p>
+                <p onClick = {this.props.click}>
+                    {this.props.name} - {this.props.age} years old! 
+                </p>
                 <p>{this.props.children}</p>
-                <input type = "text" onChange = {this.props.changed} defaultValue = {this.props.name}/>
+                <input 
+                    type = "text" 
+                    // ref = {(inputEl) => {this.inputEl = inputEl}}  older approach for older version of React
+                    ref = {this.inputElementRef}
+                    onChange = {this.props.changed} 
+                    defaultValue = {this.props.name}
+                />
             </Aux>    
         )
     }
