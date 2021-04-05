@@ -2,7 +2,10 @@ import React from 'react'
 import Person from './Person/Person'
 import ErrorBoundary from '../../ErrorBoundary/ErrorBoundary'
 
-const Persons = (props) => props.persons.map( (person, index) => {
+const Persons = (props) => {
+    console.log('[Persons.js] rendering...');
+
+    return props.persons.map( (person, index) => {
         return <ErrorBoundary key = {person.id}>
           <Person 
           click = {() => props.clicked(index)} 
@@ -10,6 +13,6 @@ const Persons = (props) => props.persons.map( (person, index) => {
           age = {person.age} 
           changed = {(event) => props.changed(event, person.id)} />
         </ErrorBoundary>
-      });
+      })};
 
 export default Persons;
